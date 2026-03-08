@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import mi.banco.finanzas_bancarias.enums.EnumEstadoCuenta;
+import mi.banco.finanzas_bancarias.enums.EnumTipoCuenta;
 
 import java.math.BigDecimal;
 
@@ -29,17 +31,16 @@ public class Cuenta {
     @Column(name = "NumeroCuenta", nullable = false, unique = true, length = 30)
     private String numeroCuenta;
 
-    @NotBlank(message = "El tipo de cuenta es obligatorio")
-    @Column(name = "TipoCuenta", nullable = false, length = 30)
-    private String tipoCuenta;
+    @Enumerated(EnumType.STRING)
+    private EnumTipoCuenta tipoCuenta;
 
     @NotNull(message = "El saldo inicial es obligatorio")
     @DecimalMin(value = "0.00", message = "El saldo inicial no puede ser negativo")
     @Column(name = "SaldoInicial", nullable = false, precision = 15, scale = 2)
     private BigDecimal saldoInicial;
 
-    @Column(name = "Estado", length = 20)
-    private String estado;
+    @Enumerated(EnumType.STRING)
+    private EnumEstadoCuenta estado;
 
     @Column(name = "ClienteId", nullable = false)
     private Long clienteId;

@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import mi.banco.finanzas_bancarias.enums.EnumTipoMovimiento;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -30,9 +31,8 @@ public class Movimiento {
     @Column(name = "Fecha", nullable = false)
     private LocalDateTime fecha;
 
-    @NotBlank(message = "El tipo de movimiento es obligatorio")
-    @Column(name = "TipoMovimiento", nullable = false, length = 30)
-    private String tipoMovimiento;
+    @Enumerated(EnumType.STRING)
+    private EnumTipoMovimiento tipoMovimiento;
 
     @NotNull(message = "El valor es obligatorio")
     @DecimalMin(value = "0.01", message = "El valor debe ser mayor a 0")
