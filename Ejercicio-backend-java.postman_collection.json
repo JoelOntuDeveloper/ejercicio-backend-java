@@ -1,0 +1,1358 @@
+{
+  "info": {
+    "_postman_id": "02081ea8-1c18-4d49-a29d-97812a3751dc",
+    "name": "Ejercicio-backend-java",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23265366",
+    "_collection_link": "https://go.postman.co/collection/23265366-02081ea8-1c18-4d49-a29d-97812a3751dc?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "crm-clientes",
+      "item": [
+        {
+          "name": "Obtener todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{crm-clientes}}/api/clientes",
+              "host": [
+                "{{crm-clientes}}"
+              ],
+              "path": [
+                "api",
+                "clientes"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{crm-clientes}}/api/clientes",
+                  "host": [
+                    "{{crm-clientes}}"
+                  ],
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 Mar 2026 18:31:42 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"clienteId\": 3,\n        \"identificacion\": \"1724363538\",\n        \"nombre\": \"Jose Lema\",\n        \"genero\": \"MASCULINO\",\n        \"edad\": 18,\n        \"direccion\": \"Otavalo sn y principal\",\n        \"telefono\": \"098254785\",\n        \"estado\": \"ACTIVO\"\n    },\n    {\n        \"clienteId\": 4,\n        \"identificacion\": \"1724363558\",\n        \"nombre\": \"Marianela Montalvo\",\n        \"genero\": \"FEMENINO\",\n        \"edad\": 18,\n        \"direccion\": \"Amazonas y NNUU\",\n        \"telefono\": \"097548965\",\n        \"estado\": \"ACTIVO\"\n    },\n    {\n        \"clienteId\": 5,\n        \"identificacion\": \"1724363526\",\n        \"nombre\": \"Juan Osorio\",\n        \"genero\": \"MASCULINO\",\n        \"edad\": 18,\n        \"direccion\": \"13 junio y Equinoccial\",\n        \"telefono\": \"098874587\",\n        \"estado\": \"ACTIVO\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Crear Cliente",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"identificacion\": \"1748596235\",\r\n    \"nombre\": \"Joel Ontuña\",\r\n    \"direccion\": \"QUITO\",\r\n    \"telefono\": \"098874587\",\r\n    \"edad\":30,\r\n    \"genero\": \"MASCULINO\",\r\n    \"contrasena\": \"1235\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{crm-clientes}}/api/clientes",
+              "host": [
+                "{{crm-clientes}}"
+              ],
+              "path": [
+                "api",
+                "clientes"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201 Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"identificacion\": \"1724363538\",\r\n    \"nombre\": \"Jose Lema\",\r\n    \"direccion\": \"Otavalo sn y principal\",\r\n    \"telefono\": \"098254785\",\r\n    \"edad\":18,\r\n    \"genero\": \"MASCULINO\",\r\n    \"contrasena\": \"1234\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{crm-clientes}}/api/clientes",
+                  "host": [
+                    "{{crm-clientes}}"
+                  ],
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 Mar 2026 16:38:38 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"clienteId\": 3,\n    \"identificacion\": \"1724363538\",\n    \"nombre\": \"Jose Lema\",\n    \"genero\": \"MASCULINO\",\n    \"edad\": 18,\n    \"direccion\": \"Otavalo sn y principal\",\n    \"telefono\": \"098254785\",\n    \"estado\": \"ACTIVO\"\n}"
+            },
+            {
+              "name": "409 Cliente existente",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"identificacion\": \"1724363538\",\r\n    \"nombre\": \"Jose Lema\",\r\n    \"direccion\": \"Otavalo sn y principal\",\r\n    \"telefono\": \"098254785\",\r\n    \"edad\":18,\r\n    \"genero\": \"MASCULINO\",\r\n    \"contrasena\": \"1234\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{crm-clientes}}/api/clientes",
+                  "host": [
+                    "{{crm-clientes}}"
+                  ],
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 Mar 2026 16:39:17 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"timestamp\": \"2026-03-08T11:39:17.5731131\",\n    \"status\": 409,\n    \"error\": \"NOT_FOUND\",\n    \"message\": \"Ya existe un cliente con identificación: 1724363538\",\n    \"path\": \"/api/clientes\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Obtener cliente",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{crm-clientes}}/api/clientes/1",
+              "host": [
+                "{{crm-clientes}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{crm-clientes}}/api/clientes/3",
+                  "host": [
+                    "{{crm-clientes}}"
+                  ],
+                  "path": [
+                    "api",
+                    "clientes",
+                    "3"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 Mar 2026 18:36:45 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"clienteId\": 3,\n    \"identificacion\": \"1724363538\",\n    \"nombre\": \"Jose Lema\",\n    \"genero\": \"MASCULINO\",\n    \"edad\": 18,\n    \"direccion\": \"Otavalo sn y principal\",\n    \"telefono\": \"098254785\",\n    \"estado\": \"ACTIVO\"\n}"
+            },
+            {
+              "name": "404",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{crm-clientes}}/api/clientes/1",
+                  "host": [
+                    "{{crm-clientes}}"
+                  ],
+                  "path": [
+                    "api",
+                    "clientes",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 Mar 2026 18:37:58 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"timestamp\": \"2026-03-08T13:37:58.0314422\",\n    \"status\": 404,\n    \"error\": \"NOT_FOUND\",\n    \"message\": \"Cliente no encontrado\",\n    \"path\": \"/api/clientes/1\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Obtener cliente por Identificación",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{crm-clientes}}/api/clientes/identificacion/17243635",
+              "host": [
+                "{{crm-clientes}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "identificacion",
+                "17243635"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{crm-clientes}}/api/clientes/identificacion/1724363538",
+                  "host": [
+                    "{{crm-clientes}}"
+                  ],
+                  "path": [
+                    "api",
+                    "clientes",
+                    "identificacion",
+                    "1724363538"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 Mar 2026 18:36:50 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"clienteId\": 3,\n    \"identificacion\": \"1724363538\",\n    \"nombre\": \"Jose Lema\",\n    \"genero\": \"MASCULINO\",\n    \"edad\": 18,\n    \"direccion\": \"Otavalo sn y principal\",\n    \"telefono\": \"098254785\",\n    \"estado\": \"ACTIVO\"\n}"
+            },
+            {
+              "name": "404",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{crm-clientes}}/api/clientes/identificacion/17243635",
+                  "host": [
+                    "{{crm-clientes}}"
+                  ],
+                  "path": [
+                    "api",
+                    "clientes",
+                    "identificacion",
+                    "17243635"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 Mar 2026 18:38:17 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"timestamp\": \"2026-03-08T13:38:17.1646201\",\n    \"status\": 404,\n    \"error\": \"NOT_FOUND\",\n    \"message\": \"Cliente no encontrado\",\n    \"path\": \"/api/clientes/identificacion/17243635\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Actualizar Cliente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"edad\":25\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{crm-clientes}}/api/clientes/1",
+              "host": [
+                "{{crm-clientes}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"edad\":25\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{crm-clientes}}/api/clientes/3",
+                  "host": [
+                    "{{crm-clientes}}"
+                  ],
+                  "path": [
+                    "api",
+                    "clientes",
+                    "3"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 Mar 2026 18:40:15 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"clienteId\": 3,\n    \"identificacion\": \"1724363538\",\n    \"nombre\": \"Jose Lema\",\n    \"genero\": \"MASCULINO\",\n    \"edad\": 25,\n    \"direccion\": \"Otavalo sn y principal\",\n    \"telefono\": \"098254785\",\n    \"estado\": \"ACTIVO\"\n}"
+            },
+            {
+              "name": "404",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"edad\":25\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{crm-clientes}}/api/clientes/1",
+                  "host": [
+                    "{{crm-clientes}}"
+                  ],
+                  "path": [
+                    "api",
+                    "clientes",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 Mar 2026 18:40:54 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"timestamp\": \"2026-03-08T13:40:54.366864\",\n    \"status\": 404,\n    \"error\": \"NOT_FOUND\",\n    \"message\": \"Cliente no encontrado\",\n    \"path\": \"/api/clientes/1\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Eliminar Cliente",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{crm-clientes}}/api/clientes/64",
+              "host": [
+                "{{crm-clientes}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "64"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "204",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{crm-clientes}}/api/clientes/6",
+                  "host": [
+                    "{{crm-clientes}}"
+                  ],
+                  "path": [
+                    "api",
+                    "clientes",
+                    "6"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 Mar 2026 18:43:22 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            },
+            {
+              "name": "404",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{crm-clientes}}/api/clientes/64",
+                  "host": [
+                    "{{crm-clientes}}"
+                  ],
+                  "path": [
+                    "api",
+                    "clientes",
+                    "64"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 Mar 2026 18:43:53 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"timestamp\": \"2026-03-08T13:43:53.4342811\",\n    \"status\": 404,\n    \"error\": \"NOT_FOUND\",\n    \"message\": \"Cliente no encontrado\",\n    \"path\": \"/api/clientes/64\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "finanzas-bancarias",
+      "item": [
+        {
+          "name": "Cuentas",
+          "item": [
+            {
+              "name": "Obtener Cuentas",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{finanzas-bancarias}}/api/cuentas",
+                  "host": [
+                    "{{finanzas-bancarias}}"
+                  ],
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener cuenta por id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{finanzas-bancarias}}/api/cuentas/1",
+                  "host": [
+                    "{{finanzas-bancarias}}"
+                  ],
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener cuenta por numeroCuenta",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{finanzas-bancarias}}/api/cuentas/numero-cuenta/ABC12345",
+                  "host": [
+                    "{{finanzas-bancarias}}"
+                  ],
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "numero-cuenta",
+                    "ABC12345"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener cuentas por clienteId",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{finanzas-bancarias}}/api/cuentas/cliente/1",
+                  "host": [
+                    "{{finanzas-bancarias}}"
+                  ],
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "cliente",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Listar todas las cuentas",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{finanzas-bancarias}}/api/cuentas",
+                  "host": [
+                    "{{finanzas-bancarias}}"
+                  ],
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crear cuenta",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"clienteId\": 3,\r\n    \"tipoCuenta\": \"AHORROS\",\r\n    \"saldoInicial\": 1000.00\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{finanzas-bancarias}}/api/cuentas",
+                  "host": [
+                    "{{finanzas-bancarias}}"
+                  ],
+                  "path": [
+                    "api",
+                    "cuentas"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "201",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\"clienteId\":1,\"tipoCuenta\":\"AHORROS\",\"saldoInicial\":1000.00}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{finanzas-bancarias}}/api/cuentas",
+                      "host": [
+                        "{{finanzas-bancarias}}"
+                      ],
+                      "path": [
+                        "api",
+                        "cuentas"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "description": "",
+                      "type": "text"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 08 Mar 2026 22:05:59 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"id\": 1,\n    \"clienteId\": 1,\n    \"numeroCuenta\": \"FEAC3570\",\n    \"tipoCuenta\": \"AHORROS\",\n    \"estado\": \"ACTIVO\",\n    \"saldoInicial\": 1000\n}"
+                }
+              ]
+            },
+            {
+              "name": "Actualizar estado de cuenta",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"estadoCuenta\":\"INACTIVO\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{finanzas-bancarias}}/api/cuentas/1",
+                  "host": [
+                    "{{finanzas-bancarias}}"
+                  ],
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminado logico de cuenta",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{finanzas-bancarias}}/api/cuentas/1",
+                  "host": [
+                    "{{finanzas-bancarias}}"
+                  ],
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Movimientos",
+          "item": [
+            {
+              "name": "Listar movimientos por cuentaId",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{finanzas-bancarias}}/api/movimientos/cuenta/1",
+                  "host": [
+                    "{{finanzas-bancarias}}"
+                  ],
+                  "path": [
+                    "api",
+                    "movimientos",
+                    "cuenta",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crear deposito (valor positivo)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"numeroCuenta\": \"60C84D11\",\r\n    \"valor\": -2000.00\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{finanzas-bancarias}}/api/movimientos",
+                  "host": [
+                    "{{finanzas-bancarias}}"
+                  ],
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crear retiro (valor negativo)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"numeroCuenta\": \"FEAC3570\",\r\n    \"valor\": -5000.00\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{finanzas-bancarias}}/api/movimientos",
+                  "host": [
+                    "{{finanzas-bancarias}}"
+                  ],
+                  "path": [
+                    "api",
+                    "movimientos"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "201",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"numeroCuenta\": \"FEAC3570\",\r\n    \"valor\": -500.00\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{finanzas-bancarias}}/api/movimientos",
+                      "host": [
+                        "{{finanzas-bancarias}}"
+                      ],
+                      "path": [
+                        "api",
+                        "movimientos"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 08 Mar 2026 22:11:53 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"id\": 2,\n    \"numeroCuenta\": null,\n    \"valor\": 50,\n    \"saldo\": 1150,\n    \"tipoMovimiento\": \"RETIRO\",\n    \"fecha\": \"2026-03-08T17:11:53.8666585\"\n}"
+                },
+                {
+                  "name": "409",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"numeroCuenta\": \"FEAC3570\",\r\n    \"valor\": -5000.00\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{finanzas-bancarias}}/api/movimientos",
+                      "host": [
+                        "{{finanzas-bancarias}}"
+                      ],
+                      "path": [
+                        "api",
+                        "movimientos"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sun, 08 Mar 2026 22:12:20 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"timestamp\": \"2026-03-08T17:12:20.1429125\",\n    \"status\": 409,\n    \"error\": \"CONFLICT\",\n    \"message\": \"Saldo no disponible\",\n    \"path\": \"/api/movimientos\"\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Estado de cuenta",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "type": "text",
+                  "key": "clienteId",
+                  "value": "1"
+                },
+                {
+                  "type": "text",
+                  "key": "fechaInicio",
+                  "value": "2026-03-01T00:00:00"
+                },
+                {
+                  "type": "text",
+                  "key": "fechaFin",
+                  "value": "2026-03-08T23:59:59"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{finanzas-bancarias}}/api/reportes?clienteId=3&fechaInicio=2026-03-01T00:00:00&fechaFin=2026-03-08T23:59:59",
+              "host": [
+                "{{finanzas-bancarias}}"
+              ],
+              "path": [
+                "api",
+                "reportes"
+              ],
+              "query": [
+                {
+                  "key": "clienteId",
+                  "value": "3"
+                },
+                {
+                  "key": "fechaInicio",
+                  "value": "2026-03-01T00:00:00"
+                },
+                {
+                  "key": "fechaFin",
+                  "value": "2026-03-08T23:59:59"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "type": "text",
+                      "key": "clienteId",
+                      "value": "1"
+                    },
+                    {
+                      "type": "text",
+                      "key": "fechaInicio",
+                      "value": "2026-03-01T00:00:00"
+                    },
+                    {
+                      "type": "text",
+                      "key": "fechaFin",
+                      "value": "2026-03-08T23:59:59"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{finanzas-bancarias}}/api/reportes?clienteId=3&fechaInicio=2026-03-01T00:00:00&fechaFin=2026-03-08T23:59:59",
+                  "host": [
+                    "{{finanzas-bancarias}}"
+                  ],
+                  "path": [
+                    "api",
+                    "reportes"
+                  ],
+                  "query": [
+                    {
+                      "key": "clienteId",
+                      "value": "3"
+                    },
+                    {
+                      "key": "fechaInicio",
+                      "value": "2026-03-01T00:00:00"
+                    },
+                    {
+                      "key": "fechaFin",
+                      "value": "2026-03-08T23:59:59"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 Mar 2026 23:40:59 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"clienteId\": 3,\n        \"nombreCliente\": \"Jose Lema\",\n        \"identificacionCliente\": \"1724363538\",\n        \"numeroCuenta\": \"60C84D11\",\n        \"tipoCuenta\": \"AHORROS\",\n        \"estado\": \"ACTIVO\",\n        \"saldoInicial\": 1000,\n        \"saldoActual\": 1200,\n        \"movimientos\": [\n            {\n                \"fecha\": \"2026-03-08T18:26:24.665468\",\n                \"tipoMovimiento\": \"DEPOSITO\",\n                \"valor\": 200,\n                \"saldo\": 1200\n            }\n        ]\n    }\n]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
