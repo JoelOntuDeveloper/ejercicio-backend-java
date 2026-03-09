@@ -39,6 +39,7 @@ Flujo de integración para reporte:
 .
 ├─ crm-clientes/
 ├─ finanzas-bancarias/
+├─ docker-compose.yml
 ├─ BaseDatos.sql
 ├─ Ejercicio-backend-java.postman_collection.json
 └─ README.md
@@ -77,32 +78,32 @@ Cada microservicio usa su propio `application.properties`.
 ### `crm-clientes/src/main/resources/application.properties`
 
 - `spring.application.name=crm-clientes`
-- `server.port=8081`
-- `spring.datasource.url=jdbc:postgresql://localhost:5432/crm_clientes`
-- `spring.datasource.username=postgres`
-- `spring.datasource.password=root`
+- `server.port=${SERVER_PORT:8081}`
+- `spring.datasource.url=${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/crm_clientes}`
+- `spring.datasource.username=${SPRING_DATASOURCE_USERNAME:postgres}`
+- `spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:root}`
 - `spring.jpa.hibernate.ddl-auto=none`
-- `spring.jpa.show-sql=true`
+- `spring.jpa.show-sql=${SPRING_JPA_SHOW_SQL:true}`
 - Propiedades RabbitMQ:
-  - `spring.rabbitmq.host=localhost`
-  - `spring.rabbitmq.port=5672`
-  - `spring.rabbitmq.username=guest`
-  - `spring.rabbitmq.password=guest`
+  - `spring.rabbitmq.host=${SPRING_RABBITMQ_HOST:localhost}`
+  - `spring.rabbitmq.port=${SPRING_RABBITMQ_PORT:5672}`
+  - `spring.rabbitmq.username=${SPRING_RABBITMQ_USERNAME:guest}`
+  - `spring.rabbitmq.password=${SPRING_RABBITMQ_PASSWORD:guest}`
 
 ### `finanzas-bancarias/src/main/resources/application.properties`
 
 - `spring.application.name=finanzas-bancarias`
-- `server.port=8084`
-- `spring.datasource.url=jdbc:postgresql://localhost:5432/finanzas_bancarias`
-- `spring.datasource.username=postgres`
-- `spring.datasource.password=root`
+- `server.port=${SERVER_PORT:8084}`
+- `spring.datasource.url=${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/finanzas_bancarias}`
+- `spring.datasource.username=${SPRING_DATASOURCE_USERNAME:postgres}`
+- `spring.datasource.password=${SPRING_DATASOURCE_PASSWORD:root}`
 - `spring.jpa.hibernate.ddl-auto=none`
-- `spring.jpa.show-sql=true`
+- `spring.jpa.show-sql=${SPRING_JPA_SHOW_SQL:true}`
 - Propiedades RabbitMQ:
-  - `spring.rabbitmq.host=localhost`
-  - `spring.rabbitmq.port=5672`
-  - `spring.rabbitmq.username=guest`
-  - `spring.rabbitmq.password=guest`
+  - `spring.rabbitmq.host=${SPRING_RABBITMQ_HOST:localhost}`
+  - `spring.rabbitmq.port=${SPRING_RABBITMQ_PORT:5672}`
+  - `spring.rabbitmq.username=${SPRING_RABBITMQ_USERNAME:guest}`
+  - `spring.rabbitmq.password=${SPRING_RABBITMQ_PASSWORD:guest}`
 
 Importante: `ddl-auto=none` implica que el esquema debe existir antes de iniciar las aplicaciones.
 
@@ -223,17 +224,53 @@ Ejemplo movimiento (retiro):
 
 ## Levantar el entorno
 
-## 1) Requisitos
+### Opción A: Docker Compose (recomendada)
+
+Requisito: Docker Desktop (o Docker Engine + Docker Compose).
+
+Desde la raíz del proyecto:
+
+```bash
+docker compose up --build -d
+```
+
+Esto levanta:
+
+- PostgreSQL en `localhost:5432`
+- RabbitMQ en `localhost:5672` y panel en `http://localhost:15672`
+- `crm-clientes` en `http://localhost:8081`
+- `finanzas-bancarias` en `http://localhost:8084`
+
+Credenciales RabbitMQ en Docker Compose:
+
+- usuario: `banco`
+- contraseña: `banco123`
+
+Importante: `BaseDatos.sql` se ejecuta automáticamente solo en el primer arranque del volumen de PostgreSQL.
+
+Comandos útiles:
+
+```bash
+docker compose logs -f
+docker compose down
+docker compose down -v
+```
+
+Usa `docker compose down -v` para eliminar volúmenes y forzar una inicialización limpia de la base de datos.
+
+### Opción B: Ejecución local manual
+
+#### 1) Requisitos
 
 - JDK 21
 - PostgreSQL
 - RabbitMQ
 
-## 2) Crear bases y tablas
+#### 2) Crear bases y tablas
 
 Ejecuta `BaseDatos.sql` antes de arrancar los servicios.
 
-## 3) Iniciar RabbitMQ
+#### 3) Iniciar RabbitMQ
 
 Ejemplo con Docker:
 
@@ -243,7 +280,7 @@ docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
 Panel web: `http://localhost:15672` (usuario/clave por defecto: `guest/guest`).
 
-## 4) Iniciar microservicios
+#### 4) Iniciar microservicios
 
 Desde `crm-clientes/`:
 

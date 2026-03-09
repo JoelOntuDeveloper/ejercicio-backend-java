@@ -1,14 +1,9 @@
-DO $$
-BEGIN
-    IF NOT EXISTS (
-        SELECT FROM pg_database WHERE datname = 'crm_clientes'
-    ) THEN
-        CREATE DATABASE crm_clientes;
-    END IF;
-END
-$$;
+SELECT 'CREATE DATABASE crm_clientes'
+WHERE NOT EXISTS (
+    SELECT FROM pg_database WHERE datname = 'crm_clientes'
+)\gexec
 
-\c crm_clientes;
+\c crm_clientes
 
 CREATE TABLE IF NOT EXISTS persona (
     persona_id BIGSERIAL PRIMARY KEY,
@@ -30,17 +25,12 @@ CREATE TABLE IF NOT EXISTS cliente (
         REFERENCES persona(persona_id)
 );
 
-DO $$
-BEGIN
-    IF NOT EXISTS (
-        SELECT FROM pg_database WHERE datname = 'finanzas_bancarias'
-    ) THEN
-        CREATE DATABASE finanzas_bancarias;
-    END IF;
-END
-$$;
+SELECT 'CREATE DATABASE finanzas_bancarias'
+WHERE NOT EXISTS (
+    SELECT FROM pg_database WHERE datname = 'finanzas_bancarias'
+)\gexec
 
-\c finanzas_bancarias;
+\c finanzas_bancarias
 
 CREATE TABLE IF NOT EXISTS cuenta (
     cuenta_id BIGSERIAL PRIMARY KEY,

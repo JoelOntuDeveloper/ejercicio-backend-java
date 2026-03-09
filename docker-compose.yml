@@ -1,0 +1,102 @@
+﻿services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: banco-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  db-init:
+    image: postgres:16-alpine
+    container_name: banco-db-init
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PGPASSWORD: root
+    volumes:
+      - ./BaseDatos.sql:/scripts/BaseDatos.sql:ro
+    command: >
+      sh -c "psql -v ON_ERROR_STOP=1 -h postgres -U postgres -d postgres -f /scripts/BaseDatos.sql"
+    restart: "no"
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: banco-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: banco
+      RABBITMQ_DEFAULT_PASS: banco123
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  crm-clientes:
+    build:
+      context: ./crm-clientes
+    container_name: banco-crm-clientes
+    environment:
+      SERVER_PORT: 8081
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/crm_clientes
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: banco
+      SPRING_RABBITMQ_PASSWORD: banco123
+    ports:
+      - "8081:8081"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      db-init:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+
+  finanzas-bancarias:
+    build:
+      context: ./finanzas-bancarias
+    container_name: banco-finanzas-bancarias
+    environment:
+      SERVER_PORT: 8084
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/finanzas_bancarias
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: banco
+      SPRING_RABBITMQ_PASSWORD: banco123
+    ports:
+      - "8084:8084"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      db-init:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  rabbitmq_data:
